@@ -1,0 +1,10 @@
+<div class="row g-4 mt-5">
+    {% for project in projects %}
+            {{ include('views/projects/partial/_images_layout.html.twig', {
+                'link': path('app_project_show', {'slug': project.translation(app.request.locale).slug, '_locale': app.request.locale}),
+                'images': project.images,
+                'display_title': project.getTranslation(app.request.locale).title,
+                'title_classes': loop.index % 2 == 0 ? 'text-primary bg-secondary' : 'text-white bg-primary',
+            }) }}
+    {% endfor %}
+</div>

@@ -1,0 +1,23 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block title %}{{ 'app.views.home'|trans }}{% endblock %}
+
+{% block body %}
+    <section class="text-center" id="intro">
+        <img src="{{ home.image is not null ? home.image : asset('images/upload/Coolkids.png') }}" class="image-home img-fluid" alt="ptimec-qui-pedal"/>
+        <h1 class="text-primary title">
+            {% if home is not null %}
+                {{ home.getTranslation(app.request.locale).title }}
+            {% else %}
+                {{ 'app.name'|trans }}
+            {% endif %}
+        </h1>
+        {% if home is not null %}
+            <div class="mt-5">
+                {{ home.getTranslation(app.request.locale).description|raw }}
+            </div>
+        {% endif %}
+        {{ include('views/home/_galleries.html.twig', {'projects': projects}) }}
+    </section>
+{% endblock %}
+

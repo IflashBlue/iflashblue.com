@@ -1,0 +1,46 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block title %}{{ 'app.views.contact'|trans }}{% endblock %}
+
+{% block body %}
+    <section id="contact" class="text-center">
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-12">
+                <p class="text-primary text-bolder">
+                    {{ 'app.collective'|trans }}
+                </p>
+            </div>
+            {% if configuration is not null %}
+                <div class="col-12">
+                    <p>{{ configuration.city }}</p>
+                    <p>{{ configuration.email }}</p>
+                </div>
+            {% endif %}
+            <div class="col-12">
+                <img class="nav-image" src="{{ asset('images/upload/ptitmeccontact.gif') }}" alt="contactptitmec">
+            </div>
+            <div class="col-12">
+                <p class="text-primary text-bolder">
+                    {{ 'app.form.contact.name'|trans }}
+                </p>
+            </div>
+            <div class="col-12">
+                {{ form_widget(form.name) }}
+                {{ form_errors(form.name) }}
+            </div>
+            <div class="col-12">
+                {{ form_widget(form.email) }}
+                {{ form_errors(form.email) }}
+            </div>
+            <div class="col-12">
+                {{ form_widget(form.message) }}
+                {{ form_errors(form.message) }}
+            </div>
+            <div class="col-12">{{ form_row(form.save, {'attr': {'class': 'stylish'}}) }}</div>
+        </div>
+        {{ form_errors(form) }}
+        {{ form_end(form) }}
+    </section>
+{% endblock %}
+

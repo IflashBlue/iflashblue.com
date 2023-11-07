@@ -1,0 +1,14 @@
+<div class="row g-3">
+    <div class="col-12">
+        {{ form_row(form.file) }}
+    </div>
+    <div class="col-12 text-center">
+        {% if home.image is not null %}
+            {{ include('components/_image_preview.html.twig', {
+                'image_url': home.image,
+                'alt': 'app.views.home'|trans
+            }) }}
+        {% endif %}
+    </div>
+</div>
+

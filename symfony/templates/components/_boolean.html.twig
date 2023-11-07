@@ -1,0 +1,5 @@
+{% if value == true or value == 1 or value == '1' %}
+<i class="bi bi-check-circle text-success" title="{{ 'app.boolean.true'|trans }}"></i>
+{% else %}
+    <i class="bi bi-x-circle text-danger" title="{{ 'app.boolean.false'|trans }}"></i>
+{% endif %}

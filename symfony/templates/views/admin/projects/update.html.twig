@@ -1,0 +1,12 @@
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% extends 'layouts/admin.html.twig' %}
+{% block title %}{{ 'admin.project.edit_project'|trans }}{% endblock %}
+{% block body %}
+    <div class="row g-3">
+        <div class="col-12">
+            <h1 class="text-primary fw-bold">{{ 'admin.project.edit_project'|trans }}</h1>
+            {{ include('views/admin/projects/partial/_form.html.twig', {'form': form}) }}
+        </div>
+    </div>
+{% endblock body %}

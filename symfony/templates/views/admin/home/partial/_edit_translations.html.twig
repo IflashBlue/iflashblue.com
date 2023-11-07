@@ -1,0 +1,35 @@
+<div class="row g-3">
+    <div class="col-12">
+        <h2 class="text-primary fw-bold">{{ form_label(form.translations) }}</h2>
+    </div>
+    <div class="col-12">
+        {% for key, translation in form.translations %}
+        <div class="accordion" id="accordionTranslation">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading_{{ key }}">
+                        <span
+                            class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapse_{{ key }}"
+                            aria-expanded="true"
+                            aria-controls="collapse_{{ key }}">
+                            <img src="{{ asset('images/flags/' ~key~ '.svg' ) }}"
+                                 class="flag-translations"
+                                 alt="{{ key }}" title="{{ key }}">
+                        </span>
+                </h2>
+                <div id="collapse_{{ key }}"
+                     class="accordion-collapse collapse show"
+                     aria-labelledby="heading_{{ key }}"
+                     data-bs-parent="#accordionTranslation">
+                    <div class="accordion-body">
+                        {{ form_row(translation.title) }}
+                        {{ form_row(translation.description) }}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

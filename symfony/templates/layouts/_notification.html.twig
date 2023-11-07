@@ -1,0 +1,7 @@
+{% for label, messages in app.flashes %}
+    <div class="snackbar show">
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    </div>
+{% endfor %}

@@ -1,0 +1,32 @@
+{% if method is not defined %}
+<a
+    {% if url is defined %}
+        href="{{ url }}"
+    {% endif %}
+{% else %}
+<form
+    {% if url is defined %}
+    action="{{ url }}?_method={{ method }}"
+    {% endif %}
+    method="post">
+    <input type="hidden" name="_method" value="{{ method }}"/>
+        <button type="submit"
+{% endif %}
+    class="btn btn-{{ type }} rounded"
+    {% if message is defined %}
+        title="{{ message }}"
+    {% endif %}
+>
+    {% if icon is defined %}
+        <i class="bi bi-{{ icon }}" type="{{ message }}"></i>
+    {% endif %}
+    {% if action_text is defined %}
+        {{ action_text }}
+    {% endif %}
+
+{% if method is not defined %}
+    </a>
+{% else %}
+    </button>
+         </form>
+{% endif %}

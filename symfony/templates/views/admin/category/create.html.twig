@@ -1,0 +1,16 @@
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% extends 'layouts/admin.html.twig' %}
+{% block title %}{{ 'admin.category.create_category'|trans }}{% endblock %}
+{% block body %}
+    <div class="row g-3">
+        <div class="col-xs-12 col-md-8">
+            <h1 class="text-primary fw-bold">{{ 'admin.category.create_category'|trans }}</h1>
+            <div class="card shadow p-3 mb-5 bg-body rounded border-0">
+                <div class="card-body">
+                    {{ include('views/admin/category/partial/_form.html.twig', {'form': form}) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

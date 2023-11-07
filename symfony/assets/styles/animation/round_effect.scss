@@ -1,0 +1,7 @@
+.round-effect {
+    transition: 1s ease;
+    &:hover {
+        border-radius:50%;
+        transition: 1s ease;
+    }
+}

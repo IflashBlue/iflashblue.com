@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <title>{{ 'app.name'|trans }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</head>
+<body class="container">
+<main>
+    <article>
+        {{ include('views/maintenance/partial/_content.html.twig') }}
+    </article>
+</main>
+</body>
+</html>
+

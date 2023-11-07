@@ -1,0 +1,180 @@
+// boostrap
+@import "bootstrap/scss/mixins/banner";
+@import "bootstrap/scss/functions";
+@import 'varriables.scss';
+// overriding vars here
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/tables";
+@import "bootstrap/scss/forms";
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/transitions";
+@import "bootstrap/scss/dropdown";
+@import "bootstrap/scss/button-group";
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/navbar";
+@import "bootstrap/scss/card";
+@import "bootstrap/scss/accordion";
+@import "bootstrap/scss/breadcrumb";
+@import "bootstrap/scss/pagination";
+@import "bootstrap/scss/badge";
+@import "bootstrap/scss/alert";
+@import "bootstrap/scss/progress";
+@import "bootstrap/scss/list-group";
+@import "bootstrap/scss/close";
+@import "bootstrap/scss/toasts";
+@import "bootstrap/scss/modal";
+@import "bootstrap/scss/tooltip";
+@import "bootstrap/scss/popover";
+@import "bootstrap/scss/carousel";
+@import "bootstrap/scss/spinners";
+@import "bootstrap/scss/offcanvas";
+@import "bootstrap/scss/placeholders";
+@import "bootstrap/scss/helpers";
+@import "bootstrap/scss/utilities/api";
+
+// custom
+@import 'accordion.scss';
+@import 'gallery.scss';
+@import 'contact.scss';
+@import 'notification.scss';
+@import 'projects.scss';
+@import 'translation.scss';
+@import './animation/round_effect';
+@import './animation/glitch_image_effect';
+
+p {
+    font-family: 'CompagnonMedium', serif;
+}
+
+@font-face {
+    font-family: 'CompagnonMedium';
+    src: url('../fonts/Compagnon-Medium.eot') format('eot');
+    font-weight: 100 900;
+}
+
+.cat-hover-link {
+    color: $secondary;
+
+    &:hover {
+        color: $white;
+
+        &:before {
+            font-size: inherit;
+            padding-right: 0.75rem;
+            content: ">";
+        }
+    }
+}
+
+.tox-promotion {
+    display: none !important;
+}
+
+p {
+    word-spacing: 0.25rem;
+    font-family: 'CompagnonMedium', sans-serif;
+}
+
+body {
+    font-family: 'CompagnonMedium', sans-serif;
+}
+
+.nav-image {
+    max-height: 200px;
+
+    &-admin {
+        max-height: 100px;
+    }
+}
+
+.image-home {
+    max-height: 500px;
+}
+
+.list {
+    list-style: none;
+}
+
+.container {
+    padding: 0 200px;
+    @include media-breakpoint-up(sm) {
+        padding: 0;
+    }
+}
+
+.title, h1, h2, h3, h4, h5, h6 {
+    font-size: 32px;
+    font-weight: 900;
+}
+
+.p-0 {
+    padding: 0;
+}
+
+.flex-0 {
+    flex: 0;
+}
+
+#footer {
+    word-spacing: 3px;
+    font-size: 15px;
+}
+
+.text-bolder {
+    font-weight: 400;
+}
+
+.text-bolder {
+    font-weight: 900;
+}
+
+li.active > a {
+    border-bottom: 3px solid $dark;
+
+    &-admin {
+        border-bottom: 3px solid $white;
+    }
+}
+
+.text-extra-small {
+    font-size: 14px;
+}
+
+.preview-image {
+    max-height: 100px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#scroll-to-top-button {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    border: $secondary solid 1px;
+    outline: none;
+    background-color: $primary;
+    opacity: 70%;
+    color: $white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 0;
+    font-size: 18px;
+    &:hover {
+        border: $primary solid 1px;
+        background-color: $secondary;
+        color: $primary;
+    }
+}

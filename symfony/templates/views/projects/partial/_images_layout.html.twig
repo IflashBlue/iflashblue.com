@@ -1,0 +1,104 @@
+{% set tot = images|length %}
+{% if tot > 0 %}
+    {% set usage = 0 %}
+    {% if display_title is not null %}
+        <div class="col-xs-12">
+            <a href="{{ link is defined ? link }}" hreflang="{{ app.request.locale }}">
+                <h2 class="{{ title_classes }} py-3">{{ display_title }}</h2>
+            </a>
+        </div>
+    {% endif %}
+    {{ _self.execute_layout(images, usage, tot, link) }}
+{% endif %}
+
+{% macro execute_layout(images, usage, total, link) %}
+    {% if total - usage <= 5 %}
+        {% if total- usage == 1 %}
+            {{ _self.layout_1(images.get(usage + 0), link) }}
+            {% set usage = usage + 1 %}
+        {% elseif total- usage == 2 %}
+            {{ _self.layout_2(images.get(usage + 0), images.get(usage + 1), link) }}
+            {% set usage = usage + 2 %}
+        {% elseif total- usage == 3 %}
+            {{ _self.layout_3(images.get(usage + 0), images.get(usage + 1), images.get(usage + 2), link) }}
+            {% set usage = usage + 3 %}
+        {% elseif total- usage == 4 %}
+            {{ _self.layout_4(images.get(usage + 0), images.get(usage + 1), images.get(usage + 2), images.get(usage + 3), link) }}
+            {% set usage = usage + 4 %}
+        {% elseif total- usage == 5 %}
+            {{ _self.layout_5(images.get(usage + 0), images.get(usage + 1), images.get(usage + 2), images.get(usage + 3), images.get(usage + 4), link) }}
+            {% set usage = usage + 5 %}
+        {% endif %}
+    {% else %}
+        {{ _self.layout_5(images.get(usage + 0), images.get(usage + 1), images.get(usage + 2), images.get(usage + 3), images.get(usage + 4), link) }}
+        {% set usage = usage + 5 %}
+        {{ _self.execute_layout(images, usage, total, link) }}
+    {% endif %}
+{% endmacro execute_layout %}
+
+
+{% macro layout_1(image, link) %}
+    <div class="col-xs-12">
+        {{ _self.image(image1, link) }}
+    </div>
+{% endmacro %}
+
+{% macro layout_2(image1, image2, link) %}
+    <div class="col-xs-12 col-md-6">
+        {{ _self.image(image1, link) }}
+    </div>
+    <div class="col-xs-12 col-md-6">
+        {{ _self.image(image2, link) }}
+    </div>
+{% endmacro %}
+
+{% macro layout_3(image1, image2, image3, link) %}
+    <div class="col-xs-12 col-md-4">
+        {{ _self.image(image1, link) }}
+    </div>
+    <div class="col-xs-12 col-md-8">
+        {{ _self.image(image2, link) }}
+    </div>
+    <div class="col-xs-12 col-md-12">
+        {{ _self.image(image3, link) }}
+    </div>
+{% endmacro %}
+
+{% macro layout_4(image1, image2, image3, image4, link) %}
+    <div class="col-xs-12 col-md-7">
+        {{ _self.image(image1, link) }}
+    </div>
+    <div class="col-xs-12 col-md-5">
+        {{ _self.image(image2, link) }}
+    </div>
+    <div class="col-xs-12 col-md-5">
+        {{ _self.image(image3, link) }}
+    </div>
+    <div class="col-xs-12 col-md-7">
+        {{ _self.image(image4, link) }}
+    </div>
+{% endmacro %}
+
+{% macro layout_5(image1, image2, image3, image4, image5, link) %}
+    <div class="col-xs-12 col-md-5">
+        {{ _self.image(image1, link) }}
+    </div>
+    <div class="col-xs-12 col-md-7">
+        {{ _self.image(image2, link) }}
+    </div>
+    <div class="col-xs-12 col-md-6">
+        {{ _self.image(image3, link) }}
+    </div>
+    <div class="col-xs-12 col-md-6">
+        {{ _self.image(image4, link) }}
+    </div>
+    <div class="col-xs-12">
+        {{ _self.image(image5, link) }}
+    </div>
+{% endmacro %}
+
+{% macro image(image, link) %}
+    <a href="{{ link }}" hreflang="{{ app.request.locale }}">
+        <img src="{{ image.image }}" alt="{{ image.image }}" class="gallery__img round-effect" role="button"/>
+    </a>
+{% endmacro image %}

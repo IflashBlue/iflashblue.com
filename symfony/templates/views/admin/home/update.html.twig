@@ -1,0 +1,29 @@
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% extends 'layouts/admin.html.twig' %}
+{% block title %}{{ 'admin.home.home'|trans }}{% endblock %}
+{% block body %}
+    {{ form_start(form) }}
+    <div class="row g-3">
+        <div class="col-xs-12 col-md-8">
+            <h1 class="text-primary fw-bold">{{ 'admin.home.update'|trans }}</h1>
+            <div class="card shadow p-3 mb-5 bg-body rounded border-0">
+                <div class="card-body">
+                    {{ include('views/admin/home/partial/_edit_translations.html.twig', {'form': form}) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+            <h1 class="text-primary fw-bold">{{ 'admin.home.edit_image'|trans }}</h1>
+            <div class="card shadow p-3 mb-5 bg-body rounded border-0">
+                <div class="card-body">
+                    {{ include('views/admin/home/partial/_edit_image.html.twig', {'form': form}) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <input type="submit" class="btn btn-primary" value="{{ 'admin.actions.save'|trans }}">
+        </div>
+    </div>
+    {{ form_end(form) }}
+{% endblock body %}

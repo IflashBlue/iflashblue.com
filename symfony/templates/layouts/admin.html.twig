@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %} - Admin -  {{ 'app.collective'|trans }}</title>
+    <link rel="icon" href="{{ asset('images/logo_white.png') }}" sizes="180x180"/>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</head>
+<body id="top">
+{% if app.user is not null %}
+    {{ include('layouts/_navbar_admin.html.twig') }}
+{% endif %}
+<main class="container-fluid mt-5">
+    {% block body %}{% endblock %}
+    {{ include('layouts/_footer.html.twig') }}
+    {{ include('layouts/_notification.html.twig') }}
+</main>
+</body>
+</html>
