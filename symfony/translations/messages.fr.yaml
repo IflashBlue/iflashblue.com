@@ -1,0 +1,119 @@
+app:
+    name: 'IFlashBlue'
+    logout: 'Déconnection'
+    footer:
+        coded: 'Codé avec amour par'
+        reserved: 'Tous droits réservés'
+    views:
+        dnd: 'D&D'
+        dnd_show: 'D&D _name_'
+        about: 'A propos'
+        projects: 'Projets'
+        workshops: 'Ateliers'
+        contact: 'Contact'
+        home: 'Accueil'
+        login: 'Connection'
+        dashboard: 'Tableau de bord'
+    form:
+        contact:
+            name: 'Formulaire de contact'
+            success: 'Demande de contact Envoyer'
+            error: "Une erreur est survenu lors de l'envoie de votre message"
+            fields:
+                name: 'Nom / Prenom'
+                email: 'E-MAIL'
+                message: 'message'
+                submit: 'GO !'
+        login:
+            username: 'Pseudonyme'
+            password: 'Mot-de-passe'
+            submit: 'GO !'
+    maintenance:
+        maintenance: 'Site en cours de construction'
+    boolean:
+        'true': 'Actif'
+        'false': 'Inactif'
+    scroll:
+        top: 'Retourné en haut de la page'
+    email:
+        contact:
+            title: 'Demande de contact de : %name%'
+            hi: 'Message :'
+##########################################################################################################
+##########################################################################################################
+##########################################################################################################
+admin:
+    translations:
+        translation: 'Traductions par langues'
+    errors:
+        occurred: 'Une erreur est survenue pendant le traitement'
+        password_repeat: 'Le mot-de-passe saisi doit être identique'
+    fields:
+        password: 'Mot-de-passe'
+        password_repeat: 'Répéter le Mot-de-passe'
+    actions:
+        actions: 'Actions'
+        create: 'Créer'
+        edit: 'Modifier'
+        delete: 'Supprimer'
+        success: 'Succès'
+        reset: 'Réinitialiser'
+        validate: 'Valider'
+        save: 'Enregistrer'
+    users:
+        edit_successful: "Utilisateur modifié avec succès"
+        reset_password: "Réinitialiser le mot-de-passe"
+        reset_password_successful: "Mot-de-passe Réinitialiser avec succès"
+        user_deleted: "L'utilisateur à été supprimé avec succès"
+        update: "Modifier l'utilisateur"
+        add: 'Ajouter un utilisateur'
+        users: 'Utilisateurs'
+        username: 'Pseudonyme (instagram)'
+        lastname: 'Nom'
+        firstname: 'Prénom'
+        image: 'Image'
+        email: 'Email'
+        description: 'Description'
+    home:
+        edit_image: "Modifier l'image"
+        update: "Modifier le contenu de la page d'accueil"
+        update_successful: "La page d'accueil à été mis à jour"
+        title: 'Titre de la page'
+        description: 'Description sous le titre'
+        image: 'Image pricipal de la page'
+        home: "Page d'accueil"
+    configuration:
+        maintenance: 'Mode Maintenance'
+        edit_maintenance: 'Modifier le Mode de Maintenance'
+        active_maintenance: 'le Mode Maintenance est actif'
+        city: 'Ville'
+        phone: 'Numéro de téléphone'
+        email: 'E-mail'
+    category:
+        categories: 'Catégories'
+        category: 'Catégorie'
+        category_deleted: 'La Catégorie à été suprimmé avec succès'
+        edit_category: 'Modifier la Catégorie'
+        delete_category: 'Supprimer la Catégorie'
+        create_category: 'Créer une nouvelle Catégorie'
+        order: 'Ordre'
+        title: 'Titre'
+    project:
+        projects: 'Projets'
+        project: 'Projet'
+        edit_project: 'Modifier le Projet'
+        delete_project: 'Supprimer le Projet'
+        project_deleted: 'Le Projet à été supprimé avec succès'
+        order: 'Ordre'
+        highlight: "Afficher sur la page d'accueil"
+        title: 'Titre'
+        description: 'Description'
+        images: 'Images du projet'
+        image: 'Image'
+        image_order: "Ordre de l'Image"
+        edit_successful: 'Le Projet à été modifié avec succès'
+        create_project: 'Créer un nouveau Projet'
+    collection:
+      add: 'Ajouter un nouvel élément'
+      remove: 'Supprimer'
+    logout: 'Se déconnecter'

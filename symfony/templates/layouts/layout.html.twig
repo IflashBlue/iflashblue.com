@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ app.request.locale }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <title>{% block title %}{% endblock %} - {{ 'app.collective'|trans }}</title>
+    <title>{% block title %}{% endblock %} - {{ 'app.name'|trans }}</title>
     <link rel="icon" href="{{ asset('images/logo_white.png') }}" sizes="180x180"/>
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}

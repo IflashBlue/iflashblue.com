@@ -11,17 +11,12 @@ import './styles/app.scss';
 // start the Stimulus application
 import './bootstrap';
 
-import 'bootstrap';
-
-import 'bootstrap-icons/font/bootstrap-icons.css';
-
 
 // Import TinyMCE
 import tinymce from 'tinymce/tinymce';
 
 // A theme is also required
 import 'tinymce/themes/silver';
-
 
 tinymce.init({
   selector: 'textarea.wysiwyg',  // change this value according to your HTML

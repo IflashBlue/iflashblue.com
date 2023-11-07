@@ -1,0 +1,15 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block title %}{{ 'app.views.dnd'|trans }}{% endblock %}
+
+{% block body %}
+    {% for character in characters %}
+        <div class="container p-4">
+            <div class="flex flex-col border m-4">
+                {% for character in characters %}
+                    <a href="{{ path('dnd_show', {'id': character.id}) }}">{{ character.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

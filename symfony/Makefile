@@ -3,7 +3,7 @@ compose=docker-compose
 RUNNER_DOCKER_EXEC=$(compose) exec $(docker_app) sh -c
 
 build:
-	@$(compose) build
+	@$(compose) build --no-cache
 
 start:
 	@$(compose) up -d
