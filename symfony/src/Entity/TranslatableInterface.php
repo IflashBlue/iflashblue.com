@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Enum\LocaleEnum;
+use App\Admin\Enum\LocaleEnum;
 use Gedmo\Translatable\Translatable;
 
 interface TranslatableInterface extends Translatable

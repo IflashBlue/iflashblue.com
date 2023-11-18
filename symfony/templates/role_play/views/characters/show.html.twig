@@ -1,0 +1,24 @@
+{% extends 'role_play/layout.html.twig' %}
+
+{% block title %}{{ character.name }} - {{ 'role_play.views.characters'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="flex flex-col items-center">
+        <h1 class="text-2xl font-bold">{{ character.name }}</h1>
+
+        <h2 class="text-2xl font-bold" id="stats">{{ 'role_play.carateristics'|trans }}</h2>
+        {{ include('role_play/components/_carateristics.html.twig') }}
+
+        <h2 class="text-2xl font-bold" id="stats">{{ 'role_play.description'|trans }}</h2>
+        {{ include('role_play/components/_character_description.html.twig') }}
+
+        <h2 class="text-2xl font-bold" id="stats">{{ 'role_play.stats'|trans }}</h2>
+        {{ include('role_play/components/stats/_'~adventure.universeType.value ~'.html.twig') }}
+
+        <h2 class="text-2xl font-bold" id="gallery">{{ 'role_play.gallery'|trans }}</h2>
+        {{ include('role_play/components/_basic_gallery.html.twig', {'images': character.images}) }}
+    </div>
+{% endblock %}
+
+
+

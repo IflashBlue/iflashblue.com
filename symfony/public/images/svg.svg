@@ -1,0 +1,13 @@
+<svg width="600" height="250" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+ <g>
+  <title>Layer 1</title>
+  <line id="svg_1" stroke="#FFF" y2="1" x2="600" y1="1" x1="1"/>
+  <line id="svg_2" stroke="#FFF" y2="250" x2="1" y1="1" x1="1"/>
+  <line id="svg_3" stroke="#FFF" y2="250" x2="450" y1="1" x1="1"/>
+  <line id="svg_4" stroke="#FFF" y2="250" x2="175" y1="1" x1="1"/>
+  <path fill="none" id="svg_5" stroke="#FFF" d="m1,80a12,15 45 1 1 37,-26a10,12 0 1 1 14,-24a25,20 -45 1 1 40,-30"/>
+  <path fill="none" id="svg_6" stroke="#FFF" d="m1,160a17,20 45 1 1 75,-52a17,20 0 1 1 30,-48a30,25 -45 1 1 60,-70"/>
+  <path fill="none" id="svg_7" stroke="#FFF" d="m1,240a22,25 45 1 1 113,-78a23,26 0 1 1 46,-72a35,30 -45 1 1 90,-110"/>
+ </g>
+</svg>

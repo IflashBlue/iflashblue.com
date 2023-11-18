@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %} - {{ 'app.name'|trans }}</title>
+    <link rel="icon" href="{{ asset('images/logo.svg') }}" sizes="180x180"/>
+    {% block stylesheets %}{% endblock %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_script_tags('app') }}
+    {% block javascripts %}{% endblock %}
+</head>
+<body id="top" class="layout">
+    {{ include('site/components/_navbar.html.twig') }}
+    <main class="container-fluid layout-bg-web">
+        {% block body %}{% endblock %}
+    </main>
+    {{ include('site/components/_footer.html.twig') }}
+    {{ include('site/components/_notification.html.twig') }}
+</body>
+</html>

@@ -1,9 +1,24 @@
-controllers:
+controllers_admin:
     resource:
-        path: ../src/Controller/
-        namespace: App\Controller
+        path: ../src/Admin/Controller/
+        namespace: App\Admin\Controller
     type: attribute
 
+controllers_site:
+    resource:
+        path: ../src/Site/Controller/
+        namespace: App\Site\Controller
+    type: attribute
+
+controllers_role_play:
+    resource:
+        path: ../src/RolePlay/Controller/
+        namespace: App\RolePlay\Controller
+    type: attribute
+
+kernel:
+    resource: App\Kernel
+    type: attribute
 
 app_logout:
     path: /admin/logout

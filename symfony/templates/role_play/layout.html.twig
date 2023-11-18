@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %} - {{ 'role_play.name'|trans }} - {{ 'app.name'|trans }}</title>
+    <link rel="icon" href="{{ asset('images/logo.svg') }}" sizes="180x180"/>
+    {% block stylesheets %}{% endblock %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_script_tags('app') }}
+    {% block javascripts %}{% endblock %}
+</head>
+<body id="top" class="old-parchment">
+    <main class="container-fluid md:container mx-auto">
+        {% block body %}{% endblock %}
+    </main>
+</body>
+</html>

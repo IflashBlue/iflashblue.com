@@ -1,0 +1,6 @@
+<img src="{{ home.image }}" class="layout-image-home img-fluid" alt="iflashblue-logo"/>
+{% for i in 1..5 %}
+    <p class="font-bold text-xl my-0 py-0">|</p>
+{% endfor %}
+<h1 class="text-5xl mt-0">{{ 'app.name'|trans }}</h1>
+{{ home.getTranslation(app.request.locale).description|raw }}

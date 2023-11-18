@@ -2,19 +2,19 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Configuration\Configuration;
-use App\Entity\Configuration\ConfigurationTranslation;
-use App\Entity\Home\Home;
-use App\Entity\Home\HomeTranslation;
-use App\Entity\Project\Category;
-use App\Entity\Project\CategoryTranslation;
-use App\Entity\Project\Project;
-use App\Entity\Project\ProjectImage;
-use App\Entity\Project\ProjectTranslation;
-use App\Entity\User\User;
-use App\Entity\User\UserTranslation;
-use App\Enum\LocaleEnum;
-use App\Repository\CategoryRepository;
+use App\Admin\Entity\Article\Article;
+use App\Admin\Entity\Article\ArticleImage;
+use App\Admin\Entity\Article\ArticleTranslation;
+use App\Admin\Entity\Configuration\Configuration;
+use App\Admin\Entity\Configuration\ConfigurationTranslation;
+use App\Admin\Entity\Home\Home;
+use App\Admin\Entity\Home\HomeTranslation;
+use App\Admin\Entity\Project\Project;
+use App\Admin\Entity\Project\ProjectImage;
+use App\Admin\Entity\Project\ProjectTranslation;
+use App\Admin\Entity\User\User;
+use App\Admin\Entity\User\UserTranslation;
+use App\Admin\Enum\LocaleEnum;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -33,7 +33,7 @@ class AppFixtures extends Fixture
 
         $this->configuration($manager);
 
-        $this->categories($manager);
+        $this->articles($manager);
 
         $manager->flush();
 
@@ -46,63 +46,20 @@ class AppFixtures extends Fixture
     {
         $data = [
             [
-                'username' => 'astroi.id',
-                'password' => 'azAZ12',
-                'firstname' => 'Astrid',
-                'lastname' => 'Anquetin',
-                'email' => 'anquetin.astrid@gmail.com',
+                'username' => 'iflashblue',
+                'password' => 'N7345219n*',
+                'firstname' => 'Nathanaël',
+                'lastname' => 'Schmitt',
+                'email' => 'schmittnathanael@gmail.com',
                 'roles' => ['ROLE_ADMIN'],
-                'image' => '/images/upload/ASTRID_WEB.jpg',
+                'image' => '/images/upload/nath.jpg',
                 'translations' => [
                     [
-                        'data' => "<p>
-                                En 2019, Astrid se penche sur le milieu de la BD lors de son mémoire d'Histoire et décide de faire un virage à 180° pour changer de voie.
-                            </p>
-                            <p>
-                                Désormais étudiante en master de bande dessinée à l'ESA St Luc (Bruxelles), elle explore la forme du fanzine et s'amuse via l'objet à penser la bande dessinée toujours plus loin, équipée de son carnet de croquis et de sa tasse de thé. Toujours en quête de nouveaux médiums, elle définit peu à peu son univers empreint d'émotions.
-                            </p>
-                            <p>
-                                Vélo : De course, pour filer entre les gouttes de pluie.
-                            </p>",
+                        'data' => "<p>Developpeur , par passion.</p>",
                         'locale' => LocaleEnum::FR,
                     ],
                     [
-                        'data' => '<p>In 2019, Astrid looks at the comic book world during her History thesis and decides to make a 180° turn to change her path.
-                                </p>
-                                <p>Now a master student in comics at ESA St Luc (Brussels), she explores the form of the fanzine and has fun via the object to think the comic book always further, equipped with her sketchbook and her cup of tea. Always in search of new mediums, she defines little by little her universe full of emotions.
-                                </p>
-                                <p>Bicycle: Racing, to spin between the raindrops.</p>',
-                        'locale' => LocaleEnum::EN,
-                    ],
-                ],
-            ],
-            [
-                'username' => 'williamchristophel',
-                'password' => 'azAZ12',
-                'firstname' => 'William',
-                'lastname' => 'Christophel',
-                'email' => 'christophel.will@gmail.com',
-                'roles' => ['ROLE_ADMIN'],
-                'image' => '/images/upload/WILL_WEB.jpg',
-                'translations' => [
-                    [
-                        'data' => "<p>
-                                Après avoir terminé ses études en graphisme publicitaire et motion design en alternance, William était un peu perdu une fois atterri dans le monde du travail . Il renoue avec l'illustration pour se conforter dans un style qui lui correspond et lui permet de le mêler au design graphique dans ses projets. Touche à tout et (trop) curieux, il s'étend également à l'animation, puis aux fanzines suite à sa rencontre avec Astrid.
-                             </p>
-                             <p>
-                                Le cinéma et les BD contribuent grandement à son processus créatif, tout autant que les chocolats chauds et cookies à l'heure du goûter.
-                             </p>
-                             <p>
-                                Vélo&nbsp;: Inchangé depuis le collège.
-                             </p>",
-                        'locale' => LocaleEnum::FR,
-                    ],
-                    [
-                        'data' => '<p>After completing his studies in advertising graphics and motion design, William was a little lost once he landed in the working world. He returned to illustration to consolidate a style that suits him and allows him to mix it with graphic design in his projects. Touching everything and (too) curious, he also extends himself to animation, then to fanzines following his meeting with Astrid.
-                                </p>
-                                <p>Movies and comics contribute greatly to his creative process, as well as hot chocolates and cookies at snack time.
-                                </p>
-                                <p>Bicycle: Unchanged since high school.</p>',
+                        'data' => '<p>Developer by passion.</p>',
                         'locale' => LocaleEnum::EN,
                     ],
                 ],
@@ -140,16 +97,16 @@ class AppFixtures extends Fixture
     private function home(ObjectManager $manager): void
     {
         $data = [
-            'image' => '/images/upload/Coolkids.png',
+            'image' => '/images/logo.svg',
             'translations' => [
                 [
-                    'title' => 'Le Tandem Convergent',
-                    'description' => 'Hello, nous sommes Astrid Anquetin et William Christophel, deux jeunes artistes ayant décidé de se mettre en selle pour ouvrir notre studio de graphisme et d’illustration entre Strasbourg et Bruxelles. On vous laisse découvrir nos travaux ici et là, et n’hésitez pas à nous contacter pour toute information si vous pédalez trop.',
+                    'title' => 'Bienvenue',
+                    'description' => '<p>Ce site web est une base de connaissances et un portfolio.</p>',
                     'locale' => LocaleEnum::FR,
                 ],
                 [
-                    'title' => 'Le Tandem Convergent',
-                    'description' => 'Hello, we are Astrid Anquetin and William Christophel, two young artists who decided to open our graphic design and illustration studio between Strasbourg and Brussels. We let you discover our work here and there, and do not hesitate to contact us for any information if you pedal too much.',
+                    'title' => 'Welcome',
+                    'description' => '<p>This website is a knowledge base and a portfolio.</p>',
                     'locale' => LocaleEnum::EN,
                 ],
             ],
@@ -178,13 +135,13 @@ class AppFixtures extends Fixture
             'translations' => [
                 [
                     'locale' => LocaleEnum::FR,
-                    'email' => 'collectif.tandem@gmail.com',
-                    'city' => 'Strasbourg - Bruxelle',
+                    'email' => '@gmail.com',
+                    'city' => 'Paris',
                 ],
                 [
                     'locale' => LocaleEnum::EN,
-                    'email' => 'collectif.tandem@gmail.com',
-                    'city' => 'Strasbourg - Bruxelle',
+                    'email' => '@gmail.com',
+                    'city' => 'Paris',
                 ],
             ],
         ];
@@ -205,282 +162,101 @@ class AppFixtures extends Fixture
         $manager->persist($configuration);
     }
 
-    private function categories(ObjectManager $manager): void
+    private function articles(ObjectManager $manager): void
     {
         $data = [
             [
                 'order' => 0,
+                'highlight' => true,
                 'translations' => [
                     [
                         'locale' => LocaleEnum::FR,
-                        'title' => 'Graphisme',
+                        'title' => 'Vertex',
+                        'tags' => ['IA', 'Google'],
+                        'description' => 'Vertex connecteurs.',
                     ],
                     [
                         'locale' => LocaleEnum::EN,
-                        'title' => 'Graphic design',
+                        'title' => 'Vertex',
+                        'tags' => ['IA', 'Google'],
+                        'description' => 'Vertex connectors.',
                     ],
                 ],
-            ],
-            [
-                'order' => 1,
-                'translations' => [
+                'images' => [
                     [
-                        'locale' => LocaleEnum::FR,
-                        'title' => 'Illustration',
-                    ],
-                    [
-                        'locale' => LocaleEnum::EN,
-                        'title' => 'Illustration',
-                    ],
-                ],
-            ],
-            [
-                'order' => 2,
-                'translations' => [
-                    [
-                        'locale' => LocaleEnum::FR,
-                        'title' => 'Motion Design',
-                    ],
-                    [
-                        'locale' => LocaleEnum::EN,
-                        'title' => 'Motion Design',
-                    ],
-                ],
-            ],
-            [
-                'order' => 3,
-                'translations' => [
-                    [
-                        'locale' => LocaleEnum::FR,
-                        'title' => 'BD & Zines',
-                    ],
-                    [
-                        'locale' => LocaleEnum::EN,
-                        'title' => 'Comics & fanzines',
-                    ],
-                ],
-            ],
-            [
-                'order' => 3,
-                'translations' => [
-                    [
-                        'locale' => LocaleEnum::FR,
-                        'title' => 'Labo',
-                    ],
-                    [
-                        'locale' => LocaleEnum::EN,
-                        'title' => 'Labo',
+                        'order' => 0,
+                        'path' => '/images/upload/vertex.png',
                     ],
                 ],
             ],
         ];
-
-        /** @var array{order: int, translations: array{locale: LocaleEnum, title: string}} $row */
+        /** @var array{order: int, highlight:bool, category: string, translations: array, images: array} $row */
         foreach ($data as $row) {
-            $category = new Category();
+            $article = new Article();
+            $article->setOrder($row['order']);
+            $article->setHighlight($row['highlight']);
 
-            $category->setOrder($row['order']);
-            /** @var array{locale: LocaleEnum, title: string} $col */
-            foreach ($row['translations'] as $col) {
-                $trans = new CategoryTranslation($col['locale']);
-                $trans->setTitle($col['title']);
-                $manager->persist($trans);
-                $category->addTranslation($trans);
+            /** @var array{locale: LocaleEnum, title: string, description: string, tags: string[]} $rowTranslation */
+            foreach ($row['translations'] as $rowTranslation) {
+                $trans = new ArticleTranslation($rowTranslation['locale']);
+                $trans->setTitle($rowTranslation['title']);
+                $trans->setTags($rowTranslation['tags']);
+                $trans->setDescription($rowTranslation['description']);
+                $article->addTranslation($trans);
+            }
+            /** @var array{order: int, path: string} $rowImage */
+            foreach ($row['images'] as $rowImage) {
+                $image = new ArticleImage();
+                $image->setImage($rowImage['path']);
+                $image->setOrder($rowImage['order']);
+
+                $article->getImages()->add($image);
             }
 
-            $manager->persist($category);
+            $manager->persist($article);
         }
     }
 
     private function projects(ObjectManager $manager): void
     {
-        /** @var CategoryRepository $categoryRepository */
-        $categoryRepository = $manager->getRepository(Category::class);
-
         $data = [
             [
                 'order' => 0,
                 'highlight' => true,
-                'category' => 'Graphisme',
                 'translations' => [
                     [
                         'locale' => LocaleEnum::FR,
-                        'title' => 'BRASSERIE DU GRILLEN',
-                        'description' => 'Réalisation de divers supports graphiques pour la Brasserie du Grillen basée à Colmar, notament des étiquettes de bières éphmères, ainsi que l\'identité visuelle de leur événement anniversaire pour leurs trois ans. ',
+                        'title' => 'Le Tandem Convergent',
+                        'url' => 'https://www.tandemconvergent.com/',
+                        'description' => 'Studio de graphisme d\'Astrid Anquetin et William Christophel ',
                     ],
                     [
                         'locale' => LocaleEnum::EN,
-                        'title' => 'BRASSERIE DU GRILLEN',
-                        'description' => 'Realization of various graphic supports for the Brasserie du Grillen based in Colmar, in particular labels of ephemeral beers, as well as the visual identity of their anniversary event for their three years.',
+                        'title' => 'Le Tandem Convergent',
+                        'url' => 'https://www.tandemconvergent.com/',
+                        'description' => 'Graphic design studio of Astrid Anquetin and William Christophel.',
                     ],
                 ],
                 'images' => [
                     [
                         'order' => 0,
-                        'path' => '/images/upload/BIERE_QAR_WEB.jpg',
-                    ],
-                    [
-                        'order' => 1,
-                        'path' => '/images/upload/BIERE_CC_WEB.jpg',
-                    ],
-                    [
-                        'order' => 2,
-                        'path' => '/images/upload/GA_WEB.jpg',
-                    ],
-                ],
-            ],
-            [
-                'order' => 1,
-                'highlight' => true,
-                'category' => 'Graphisme',
-                'translations' => [
-                    [
-                        'locale' => LocaleEnum::FR,
-                        'title' => 'SCHWENDI BIER UN WISTUB',
-                        'description' => '',
-                    ],
-                    [
-                        'locale' => LocaleEnum::EN,
-                        'title' => 'SCHWENDI BIER UN WISTUB',
-                        'description' => '',
-                        ],
-                ],
-                'images' => [
-                    [
-                        'order' => 0,
-                        'path' => '/images/upload/SCHWENDI01_WEB.jpg',
-                    ],
-                    [
-                        'order' => 1,
-                        'path' => '/images/upload/SCHWENDI02_WEB.jpg',
-                    ],
-                    [
-                        'order' => 2,
-                        'path' => '/images/upload/SCHWENDI03_WEB.jpg',
-                    ],
-                    [
-                        'order' => 3,
-                        'path' => '/images/upload/SCHWENDI04_WEB.jpg',
-                    ],
-                ],
-            ],
-            [
-                'order' => 2,
-                'highlight' => true,
-                'category' => 'Illustration',
-                'translations' => [
-                    [
-                        'locale' => LocaleEnum::FR,
-                        'title' => 'ILLUSTRATIONS & PRINTS',
-                        'description' => '',
-                    ],
-                    [
-                        'locale' => LocaleEnum::EN,
-                        'title' => 'ILLUSTRATIONS & PRINTS',
-                        'description' => '',
-                        ],
-                ],
-                'images' => [
-                    [
-                        'order' => 0,
-                        'path' => '/images/upload/DRAW01_WEB.jpg',
-                    ],
-                    [
-                        'order' => 1,
-                        'path' => '/images/upload/DRAW02_WEB.jpg',
-                    ],
-                    [
-                        'order' => 2,
-                        'path' => '/images/upload/DRAW03_WEB.jpg',
-                    ],
-                    [
-                        'order' => 3,
-                        'path' => '/images/upload/DRAW04_WEB.jpg',
-                    ],
-                ],
-            ],
-            [
-                'order' => 3,
-                'highlight' => true,
-                'category' => 'BD & Zines',
-                'translations' => [
-                    [
-                        'locale' => LocaleEnum::FR,
-                        'title' => 'FANZINE RISO POP-UP RÉSIDENCE DIMENSIONNELLE',
-                        'description' => '',
-                    ],
-                    [
-                        'locale' => LocaleEnum::EN,
-                        'title' => 'FANZINE RISO POP-UP RÉSIDENCE DIMENSIONNELLE',
-                        'description' => '',
-                        ],
-                ],
-                'images' => [
-                    [
-                        'order' => 0,
-                        'path' => '/images/upload/RD07_WEB.jpg',
-                    ],
-                    [
-                        'order' => 1,
-                        'path' => '/images/upload/RD04_WEB.jpg',
-                    ],
-                    [
-                        'order' => 2,
-                        'path' => '/images/upload/RD01_WEB.jpg',
-                    ],
-                ],
-            ],
-            [
-                'order' => 4,
-                'highlight' => true,
-                'category' => 'Labo',
-                'translations' => [
-                    [
-                        'locale' => LocaleEnum::FR,
-                        'title' => 'AFFICHES ÉVÉNEMENTIELLES',
-                        'description' => '',
-                    ],
-                    [
-                        'locale' => LocaleEnum::EN,
-                        'title' => 'AFFICHES ÉVÉNEMENTIELLES',
-                        'description' => '',
-                        ],
-                ],
-                'images' => [
-                    [
-                        'order' => 0,
-                        'path' => '/images/upload/LINO_WEB.jpg',
-                    ],
-                    [
-                        'order' => 1,
-                        'path' => '/images/upload/TROLLEY_WEB.jpg',
-                    ],
-                    [
-                        'order' => 2,
-                        'path' => '/images/upload/MONTREUX_WEB.jpg',
-                    ],
-                    [
-                        'order' => 3,
-                        'path' => '/images/upload/DD_WEB.jpg',
+                        'path' => '/images/Coolkids.png',
                     ],
                 ],
             ],
         ];
-        /** @var array{order: int, highlight:bool, category: string, translations: array<array{locale: LocaleEnum, title: string, description: string}>, images: array<array{order: int, path: string}>} $row */
+        /** @var array{order: int, highlight:bool, category: string, translations: array, images: array} $row */
         foreach ($data as $row) {
-            /** @var Category $cat */
-            $cat = $categoryRepository->findOneByTitle(title: $row['category']);
-
             $project = new Project();
             $project->setOrder($row['order']);
             $project->setHighlight($row['highlight']);
-            $project->setCategory($cat);
 
-            /** @var array{locale: LocaleEnum, title: string, description: string} $rowTranslation */
+            /** @var array{locale: LocaleEnum, title: string, description: string, url: string} $rowTranslation */
             foreach ($row['translations'] as $rowTranslation) {
                 $trans = new ProjectTranslation($rowTranslation['locale']);
                 $trans->setTitle($rowTranslation['title']);
                 $trans->setDescription($rowTranslation['description']);
+                $trans->setUrl($rowTranslation['url']);
                 $project->addTranslation($trans);
             }
             /** @var array{order: int, path: string} $rowImage */

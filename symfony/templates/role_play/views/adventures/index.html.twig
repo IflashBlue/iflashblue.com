@@ -1,0 +1,33 @@
+{% extends 'role_play/layout.html.twig' %}
+
+{% block title %}{{ 'role_play.views.aventures'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="flex flex-col items-center">
+        <h1 class="text-2xl font-bold">{{ 'role_play.views.aventures'|trans }}</h1>
+        <div class="flex-1 mt-5">
+            {% for adventure in adventures %}
+                <a href="{{ path('role_play_adventures_show', {'id': adventure.id}) }}">
+                    <div class="max-w-sm w-full lg:max-w-full lg:flex">
+                        <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+                             style="background-image: url('{{ adventure.images.first is not null ? adventure.images.first.image : asset('images/no-photo-or-blank-image.jpg') }}')"
+                             title="Preview"></div>
+                        <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal old-parchment">
+                            <div class="mb-8">
+                                <p class="text-sm text-gray-600 flex items-center uppercase">{{ adventure.universeType.value }}</p>
+                                <div class="text-gray-900 font-bold text-xl mb-2 hover:underline">{{ adventure.translation(app.request.locale).title }}</div>
+                                <p class="text-gray-700 text-base hover:underline">{{ adventure.translation(app.request.locale).description }}</p>
+                            </div>
+                            <div class="flex justify-between">
+                                <p class="text-gray-700 text-base">{{ 'role_play.start_at'|trans }}{{ adventure.startAt.format('d-M-y') }}</p>
+                                {% if adventure.endAt is not null %}
+                                    <p class="text-gray-700 text-base">{{ 'role_play.end_at'|trans }}{{ adventure.endAt.format('d-M-y') }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div
+{% endblock %}

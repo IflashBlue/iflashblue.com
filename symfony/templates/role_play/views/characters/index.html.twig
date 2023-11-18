@@ -1,0 +1,30 @@
+{% extends 'role_play/layout.html.twig' %}
+
+{% block title %}{{ 'role_play.views.characters'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="flex flex-col items-center">
+        <h1 class="text-2xl font-bold">{{ 'role_play.views.characters'|trans }}</h1>
+        <div class="flex-1 mt-5">
+            {% for character in characters %}
+                <a href="{{ path('role_characters_show', {'id': character.id, 'id_adventure': app.request.get('id_adventure')}) }}">
+                    <div class="max-w-sm w-full lg:max-w-full lg:flex">
+                        <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+                             style="background-image: url('{{ character.images.first is not null ? character.images.first.image : asset('images/no-photo-or-blank-image.jpg') }}')"
+                             title="Preview"></div>
+                        <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal old-parchment">
+                            <div class="mb-8">
+                                <p class="text-sm text-gray-600 flex items-center uppercase font-bold hover:underline">{{ character.name }}</p>
+                                <p class="text-gray-700 text-base hover:underline">{{ character.raceType.value|trans }} - {{ character.classType.value|trans }}</p>
+                            </div>
+                            <div class="flex justify-between">
+                                <p class="text-gray-700 text-sm">{{ character.age }} {{ 'role_play.years_old'|trans }}</p>
+                                <p class="text-gray-700 text-sm">{{ 'role_play.level'|trans }} {{ character.level }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div
+{% endblock %}

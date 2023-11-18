@@ -1,0 +1,58 @@
+{% extends 'role_play/layout.html.twig' %}
+
+{% block title %}{{ translation.title }}{% endblock %}
+
+{% block body %}
+    <div class="flex flex-col items-center">
+        <h1 class="text-2xl font-bold">{{ translation.title }}</h1>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-9">
+            <div class="col-span-3 flex flex-col text-center">
+                <h2 class="text-xl font-bold" id="intro">{{ 'role_play.intro'|trans }}</h2>
+                {{ translation.intro }}
+                <h2 class="text-xl font-bold" id="story">{{ 'role_play.story'|trans }}</h2>
+                {{ translation.story }}
+                <h2 class="text-xl font-bold" id="end">{{ 'role_play.end'|trans }}</h2>
+                {{ translation.end }}
+            </div>
+            <div class="grid grid-cols-4 gap-4 md:border-l border-black md:px-2">
+                <h2 class="text-xl font-bold col-span-4" id="description">{{ 'role_play.description'|trans }}</h2>
+                <p class="text-gray-700 text-base col-span-4">{{ translation.description }}</p>
+
+                <p class="text-gray-700 text-base font-semibold col-span-4" id="start_at">
+                    {{ 'role_play.start_at'|trans }} {{ adventure.startAt.format('d-M-y') }}
+                </p>
+
+                {% if adventure.endAt is not null %}
+                    <p class="text-gray-700 text-base font-semibold col-span-4" id="end_at">
+                        {{ 'role_play.end_at'|trans }} {{ adventure.endAt.format('d-M-y') }}
+                    </p>
+                {% endif %}
+
+                <h2 class="text-xl font-bold col-span-4" id="characters">{{ 'role_play.views.characters'|trans }}</h2>
+                {% for character in adventure.characters %}
+                    <a class="col-span-4" href="{{ path('role_characters_show', {'id_adventure': adventure.id, 'id': character.id}) }}">
+                    <div class="flex items-center">
+                        <img class="w-10 h-10 rounded-full mr-4" src="{{ character.images.first.image }}" alt="{{ character.name }}">
+                        <div class="text-sm">
+                            <p class="text-gray-900 leading-none hover:underline">{{ character.name }}</p>
+                            <p class="text-gray-600 hover:underline">{{ character.raceType.value|trans }} - {{ character.classType.value|trans }}</p>
+                        </div>
+                    </div>
+                    </a>
+                {% endfor %}
+                <h2 class="text-xl font-bold col-span-4" id="characters">{{ 'role_play.gallery'|trans }}</h2>
+                <div class="grid grid-cols-2 gap-4 col-span-4">
+                    <div class="grid gap-4">
+                        {% for image in adventure.images %}
+                        {% if loop.index is divisible by 4 %}</div><div class="grid gap-4">{% endif %}
+                        <img class="h-auto max-w-full rounded-lg" src="{{ image.image }}" alt="{{ image.image }}"/>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+

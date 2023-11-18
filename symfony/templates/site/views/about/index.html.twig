@@ -1,0 +1,35 @@
+{% extends '../../site/layouts' %}
+
+{% block title %}{{ 'app.views.about'|trans }}{% endblock %}
+
+{% block body %}
+    <section id="intro">
+        <div class="row g-5">
+            {% for user in users %}
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            {{ include('components/amimations/_glitch_image.html.twig', {'image_url': user.image, 'title': user.username}) }}
+                        </div>
+                        <div class="col-sm-12 col-md-8">
+                            <div class="row">
+                                <div class="col-12">
+                                    <p class="text-primary text-bolder glitch">
+                                        {{ user.firstname|upper }} {{ user.lastname|upper }}
+                                        <a class="text-small text-info" href="https://www.instagram.com/{{ user.username }}/" target="_blank">
+                                            [@{{ user.username }}]
+                                        </a>
+                                    </p>
+                                </div>
+                                <div class="col-12 text-extra-small">
+                                    {{ user.getTranslation(app.request.getLocale()) ? user.getTranslation(app.request.getLocale()).description|raw }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
+

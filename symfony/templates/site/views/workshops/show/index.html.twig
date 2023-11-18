@@ -1,0 +1,9 @@
+{% extends '../../../site/layouts' %}
+
+{% block title %}{{ 'app.views.workshops'|trans }} - {# TODO name from entity #}{% endblock %}
+
+{% block body %}
+    <section id="workshops">
+        {{ include('views/maintenance/partial/_content.html.twig') }}
+    </section>
+{% endblock %}

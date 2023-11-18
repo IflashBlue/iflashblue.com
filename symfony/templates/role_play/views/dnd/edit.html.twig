@@ -1,0 +1,33 @@
+{% extends '../../site/layouts' %}
+
+{% block title %}{{ 'app.views.dnd_show'|trans({'_name_': character.name}) }}{% endblock %}
+
+{% block body %}
+        <div class="container p-4">
+            <div class="flex flex-col">
+                <header class="flex flex-row items-center">
+                    <section class="basis-1/2 ">
+                        <div class="flex flex-col text-center justify-center">
+                            <div class="header-with-dragon">
+                                <h1 class="text-xl header-on-top-of-dragon border-t border-b border-l rounded-l-xl font-extrabold">{{ character.name }}</h1>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="basis-1/2 border rounded-2xl">
+                        <div class="grid grid-cols-3 gap-4 m-4">
+                            <div><label>{{ 'class' }}</label><input type="text" class="form-input"/></div> {# TODO translation #}
+                            <div><label>{{ 'level' }}</label><input type="text" class="form-input"/></div> {# TODO translation #}
+                            <div><label>{{ 'history' }}</label><input type="text" class="form-input"/></div> {# TODO translation #}
+                            <div><label>{{ 'player name' }}</label><input type="text" class="form-input"/></div> {# TODO translation #}
+                            <div><label>{{ 'race' }}</label><input type="text" class="form-input"/></div> {# TODO translation #}
+                            <div><label>{{ 'alignment' }}</label><input type="text" class="form-input"/></div> {# TODO translation #}
+                            <div><label>{{ 'xp' }}</label><input type="text" class="form-input"/></div> {# TODO translation #}
+                        </div>
+                    </section>
+                </header>
+            </div>
+            <div class="flex flex-col border m-4">
+                <br><br><br><br><br><br><br><br>
+            </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'site/layout.html.twig' %}
+
+{% block title %}{{ 'app.views.home'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="flex flex-col gap-0 items-center">
+        <section class="layout-card text-center flex flex-col font-semibold gap-0 text-white mb-5" id="intro">
+            {{ include('site/views/home/_intro.html.twig') }}
+        </section>
+        <div class="container">
+            <div class="flex flex-col items-center">
+                <section class="w-full layout-card flex flex-col font-semibold py-5" id="articles">
+                    {{ include('site/views/home/_articles_list.html.twig') }}
+                </section>
+                <section class="w-full layout-card flex flex-col font-semibold py-5" id="articles">
+                    {{ include('site/views/home/_projects_list.html.twig') }}
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,30 @@
+.header-with-dragon {
+    position: relative;
+}
+
+.header-on-top-of-dragon {
+    position: relative;
+    background-color: white;
+    z-index: -2;
+}
+
+.header-with-dragon:after {
+    content: '';
+    position: absolute;
+    top: -200%;
+    left: -114%;
+    right: -50%;
+    height: 100px;
+    width: auto;
+    background: url('./dragon.svg') no-repeat center center;
+    background-size: contain;
+    z-index: -1;
+}
+
+.old-parchment {
+    background: url('./old-parchment.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}

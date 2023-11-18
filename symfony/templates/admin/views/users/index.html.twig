@@ -1,0 +1,49 @@
+{% extends '../../../site/layouts' %}
+{% block title %}{{ 'admin.users.users'|trans }}{% endblock %}
+{% block body %}
+    <div class="row g-3">
+        <div class="col-12">
+            <table class="table table-light table-bordered table-hover text-center border-primary">
+                <thead>
+                <tr>
+                    <th class="bg-primary text-white">{{ 'admin.users.image'|trans }}</th>
+                    <th class="bg-primary text-white">{{ 'admin.users.email'|trans }}</th>
+                    <th class="bg-primary text-white">{{ 'admin.users.firstname'|trans }}</th>
+                    <th class="bg-primary text-white">{{ 'admin.users.lastname'|trans }}</th>
+                    <th class="bg-primary text-white">{{ 'admin.actions.actions'|trans }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>
+                            {{ include('components/_image_preview.html.twig', {'image_url': user.image, 'alt':user.username }) }}
+                        </td>
+                        <td>{{ include('components/_email.html.twig', {'email': user.email}) }}</td>
+                        <td>{{ user.firstname }}</td>
+                        <td>{{ user.lastname }}</td>
+                        <td>
+
+                            {{ include('components/_action_button.html.twig', {
+                                'type': 'outline-primary',
+                                'url': path('admin_users_update', {'id': user.id}),
+                                'icon': 'pen-fill',
+                                'message': 'admin.actions.edit'|trans
+                            }) }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th class="bg-primary text-white">{{ 'admin.users.image'|trans }}</th>
+                    <th class="bg-primary text-white">{{ 'admin.users.email'|trans }}</th>
+                    <th class="bg-primary text-white">{{ 'admin.users.firstname'|trans }}</th>
+                    <th class="bg-primary text-white">{{ 'admin.users.lastname'|trans }}</th>
+                    <th class="bg-primary text-white">{{ 'admin.actions.actions'|trans }}</th>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+{% endblock %}

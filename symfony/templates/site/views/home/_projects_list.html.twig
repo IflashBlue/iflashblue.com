@@ -1,0 +1,8 @@
+{{ include('site/components//texts/_h2.html.twig', {'text': 'app.views.projects'|trans }) }}
+<div class="layout-card-body flex flex-col">
+    {% for project in projects %}
+        <a href="{{ project.translation(app.request.locale).url }}" hreflang="{{ app.request.locale }}" target="_blank">
+            {{ project.translation(app.request.locale).title }}
+        </a>
+    {% endfor %}
+</div>
