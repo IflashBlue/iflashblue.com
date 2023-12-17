@@ -4,21 +4,26 @@ namespace App\RolePlay\Entity;
 
 use App\Entity\EntityInterface;
 use App\Entity\EntityTrait;
-use App\RolePlay\Enum\ClasseType;
-use App\RolePlay\Enum\RaceType;
-use App\RolePlay\Enum\UniverseType;
-use App\RolePlay\Repository\AdventureRepository;
-use App\RolePlay\Repository\CharacterRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\TranslationTrait;
+use App\RolePlay\Repository\CharacterAttributeRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
-#[ORM\Entity(repositoryClass: CharacterRepository::class)]
+#[ORM\Entity(repositoryClass: CharacterAttributeRepository::class)]
 #[ORM\Table(name: '`role_play_character_attribute`')]
+#[Gedmo\TranslationEntity(class: CharacterAttributeTranslation::class)]
 class CharacterAttribute implements EntityInterface
 {
     use EntityTrait;
+
+    use TranslationTrait {
+        TranslationTrait::__construct as private __translationConstruct;
+    }
+    public function __construct()
+    {
+        $this->__translationConstruct();
+    }
 
     #[ORM\Column(name: '`type`', type: Types::STRING, length: 255, nullable: false)]
     private ?string $type = null;
@@ -30,5 +35,55 @@ class CharacterAttribute implements EntityInterface
     private ?int $quantity = 1;
     #[ORM\Column(name: '`diceRoll`', type: Types::INTEGER, nullable: true)]
     private ?int $diceRoll = 1;
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(?string $type): void
+    {
+        $this->type = $type;
+    }
+
+    public function getLink(): ?string
+    {
+        return $this->link;
+    }
+
+    public function setLink(?string $link): void
+    {
+        $this->link = $link;
+    }
+
+    public function getUsed(): ?int
+    {
+        return $this->used;
+    }
+
+    public function setUsed(?int $used): void
+    {
+        $this->used = $used;
+    }
+
+    public function getQuantity(): ?int
+    {
+        return $this->quantity;
+    }
+
+    public function setQuantity(?int $quantity): void
+    {
+        $this->quantity = $quantity;
+    }
+
+    public function getDiceRoll(): ?int
+    {
+        return $this->diceRoll;
+    }
+
+    public function setDiceRoll(?int $diceRoll): void
+    {
+        $this->diceRoll = $diceRoll;
+    }
 
 }

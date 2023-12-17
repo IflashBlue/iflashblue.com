@@ -124,6 +124,9 @@ role_play:
     views:
         aventures: 'Aventures'
         characters: 'Personages'
+    attributes: 'Attributs'
+    attribute:
+        type: 'Type'
     stats: 'Statistiques'
     gallery: 'Galerie'
     end: 'Fin'

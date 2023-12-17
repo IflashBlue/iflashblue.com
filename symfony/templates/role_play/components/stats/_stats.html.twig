@@ -1,0 +1,7 @@
+{% if editStats is not null %}
+    {{ include('role_play/components/stats/_stats_form.html.twig', {'form': form}) }}
+{% else %}
+    <a href="{{ path('role_characters_show', {'id_adventure': app.request.get('id_adventure'), 'id': character.id, 'editStats': true}) }}">
+        {{ 'role_play.edit_stats'|trans }}
+    </a>
+{% endif %}

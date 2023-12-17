@@ -21,6 +21,7 @@ class Character implements EntityInterface
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->attributes = new ArrayCollection();
     }
 
     use EntityTrait;
@@ -51,6 +52,18 @@ class Character implements EntityInterface
     #[ORM\InverseJoinColumn(name: 'image_id', referencedColumnName: 'id', unique: true, onDelete: 'CASCADE')]
     #[ORM\OrderBy(['order' => 'ASC'])]
     protected Collection $images;
+
+    #[ORM\ManyToMany(
+        targetEntity: CharacterAttribute::class,
+        cascade: ['all'],
+        fetch: 'EAGER',
+        orphanRemoval: true
+    )]
+    #[ORM\JoinTable(name: 'role_play_characters_atttributes')]
+    #[ORM\JoinColumn(name: 'character_id', referencedColumnName: 'id', onDelete: 'CASCADE')]
+    #[ORM\InverseJoinColumn(name: 'attribute_id', referencedColumnName: 'id', unique: true, onDelete: 'CASCADE')]
+    #[ORM\OrderBy(['type' => 'ASC'])]
+    protected Collection $attributes;
 
     public function getName(): ?string
     {
@@ -110,5 +123,15 @@ class Character implements EntityInterface
     public function setImages(Collection $images): void
     {
         $this->images = $images;
+    }
+
+    public function getAttributes(): Collection
+    {
+        return $this->attributes;
+    }
+
+    public function setAttributes(Collection $attributes): void
+    {
+        $this->attributes = $attributes;
     }
 }
