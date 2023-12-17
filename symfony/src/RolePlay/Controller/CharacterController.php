@@ -9,6 +9,7 @@ use App\RolePlay\Repository\CharacterRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use const App\RolePlay\Const\MoneyMatrice;
 
 
 #[Route(path: '/role-play/adventures/{id_adventure}/characters')]
@@ -28,6 +29,7 @@ class CharacterController extends AbstractRolePlayController
     {
         return $this->render('role_play/views/characters/show.html.twig', [
             'character' =>  $character,
+            'money_conversion' => MoneyMatrice,
             'adventure' =>  $repository->findOneByCharacter($character),
         ]);
     }

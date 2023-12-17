@@ -148,8 +148,16 @@ role_play:
     ideals: 'Idéaux'
     links: 'Liens'
     personality_defects: 'Defauts de personalité'
+    # money
+    money_conversion: 'Convertisseur d''argent'
+    po: 'Piéces d''Or'
+    pc: 'Piéces de Cuivre'
+    pp: 'Piéces de Platine'
+    pe: 'Piéces d''Eléctrum'
+    pa: 'Piéces d''Argent'
 
-
+money: monaie
+results: résultats
 ## rp classes
 barbarian: 'barbare'
 bard: 'barde'

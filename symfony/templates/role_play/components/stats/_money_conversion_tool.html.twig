@@ -1,0 +1,86 @@
+<form id="moneyConverter" class="grid grid-cols-1 justify-items-center lg:grid-cols-6 text-center">
+    <div class="flex flex-row items-center">
+        <label for="pc">{{ 'role_play.pc'|trans }}:</label>
+        <input type="number" id="pc" value="0"><br>
+    </div>
+    <div class="flex flex-row items-center">
+        <label for="pa">{{ 'role_play.pa'|trans }}:</label>
+        <input type="number" id="pa" value="0"><br>
+    </div>
+    <div class="flex flex-row items-center">
+        <label for="pe">{{ 'role_play.pe'|trans }}:</label>
+        <input type="number" id="pe" value="0"><br>
+
+    </div>
+    <div class="flex flex-row items-center">
+        <label for="po">{{ 'role_play.po'|trans }}:</label>
+        <input type="number" id="po" value="0"><br>
+    </div>
+    <div class="flex flex-row items-center">
+        <label for="pp">{{ 'role_play.pp'|trans }}:</label>
+        <input type="number" id="pp" value="0"><br>
+    </div>
+    <input type="button"  class="bg-blue-500 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded" value="{{ 'convert'|trans }}" onclick="convertMoney()">
+</form>
+
+<table class="table-auto w-full border-collapse border border-gray-600 text-center">
+    <thead>
+    <tr>
+        <th class="border border-gray-600 px-4 py-2">{{ 'money'|trans  }}</th>
+        <th class="border border-gray-600 px-4 py-2">{{ 'results'|trans  }}</th>
+    </tr>
+    </thead>
+    <tbody id="resultTable"></tbody>
+</table>
+
+<script>
+    const MoneyMatrice = [
+        [1, 1 / 10, 1 / 50, 1 / 100, 1 / 1000],
+        [10, 1, 1 / 5, 1 / 10, 1 / 100],
+        [50, 5, 1, 1 / 2, 1 / 20],
+        [100, 10, 2, 1, 1 / 10],
+        [1000, 100, 20, 10, 1]
+    ];
+    const resultTable = document.getElementById('resultTable');
+
+    function convertMoney() {
+        const pc = parseFloat(document.getElementById('pc').value);
+        const pa = parseFloat(document.getElementById('pa').value);
+        const pe = parseFloat(document.getElementById('pe').value);
+        const po = parseFloat(document.getElementById('po').value);
+        const pp = parseFloat(document.getElementById('pp').value);
+
+        // conversion
+        const convertedPC = pc * MoneyMatrice[0][0] + pa * MoneyMatrice[1][0] + pe * MoneyMatrice[2][0] + po * MoneyMatrice[3][0] + pp * MoneyMatrice[4][0];
+        const convertedPA = pc * MoneyMatrice[0][1] + pa * MoneyMatrice[1][1] + pe * MoneyMatrice[2][1] + po * MoneyMatrice[3][1] + pp * MoneyMatrice[4][1];
+        const convertedPE = pc * MoneyMatrice[0][2] + pa * MoneyMatrice[1][2] + pe * MoneyMatrice[2][2] + po * MoneyMatrice[3][2] + pp * MoneyMatrice[4][2];
+        const convertedPO = pc * MoneyMatrice[0][3] + pa * MoneyMatrice[1][3] + pe * MoneyMatrice[2][3] + po * MoneyMatrice[3][3] + pp * MoneyMatrice[4][3];
+        const convertedPP = pc * MoneyMatrice[0][4] + pa * MoneyMatrice[1][4] + pe * MoneyMatrice[2][4] + po * MoneyMatrice[3][4] + pp * MoneyMatrice[4][4];
+
+
+        const resultHTML = `
+        <tr>
+            <td class="border border-gray-600 px-4 py-2">{{ 'role_play.pc'|trans }}</td>
+            <td class="border border-gray-600 px-4 py-2">${convertedPC}</td>
+        </tr>
+        <tr>
+            <td class="border border-gray-600 px-4 py-2">{{ 'role_play.pa'|trans }}</td>
+            <td class="border border-gray-600 px-4 py-2">${convertedPA}</td>
+        </tr>
+        <tr>
+            <td class="border border-gray-600 px-4 py-2">{{ 'role_play.pe'|trans }}</td>
+            <td class="border border-gray-600 px-4 py-2">${convertedPE}</td>
+        </tr>
+        <tr>
+            <td class="border border-gray-600 px-4 py-2">{{ 'role_play.po'|trans }}</td>
+            <td class="border border-gray-600 px-4 py-2">${convertedPO}</td>
+        </tr>
+        <tr>
+            <td class="border border-gray-600 px-4 py-2">{{ 'role_play.pp'|trans }}</td>
+            <td class="border border-gray-600 px-4 py-2">${convertedPP}</td>
+        </tr>
+    `;
+
+        resultTable.innerHTML = resultHTML;
+    }
+</script>

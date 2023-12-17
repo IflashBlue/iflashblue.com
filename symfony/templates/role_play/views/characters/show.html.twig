@@ -17,6 +17,8 @@
 
         <h2 class="text-2xl font-bold" id="gallery">{{ 'role_play.gallery'|trans }}</h2>
         {{ include('role_play/components/_basic_gallery.html.twig', {'images': character.images}) }}
+        <h2 class="text-2xl font-bold" id="gallery">{{ 'role_play.money_conversion'|trans }}</h2>
+        {{ include('role_play/components/stats/_money_conversion_tool.html.twig', {'matrice': money_conversion}) }}
     </div>
 {% endblock %}
 
